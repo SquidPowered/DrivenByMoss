@@ -251,6 +251,24 @@ public class BrowserImpl extends AbstractBrowser
     }
 
 
+    /**
+     * Insert a CLAP device directly by its CLAP ID (e.g. "com.jmoss.dsp-lab"),
+     * bypassing the browser entirely. This reaches plug-ins that the popup
+     * browser's smart-collection column cannot (the "Plug-ins" collection is not
+     * populated in the insertion popup). Inserts at the end of the selected
+     * track's device chain, or after the cursor device if one exists.
+     *
+     * @param clapId The CLAP plugin ID
+     */
+    @Override
+    public void insertClapDevice (final String clapId)
+    {
+        final InsertionPoint insertionPoint = this.cursorDevice.exists ().get () ? this.cursorDevice.afterDeviceInsertionPoint () : this.cursorTrack.endOfDeviceChainInsertionPoint ();
+        if (insertionPoint != null)
+            insertionPoint.insertCLAPDevice (clapId);
+    }
+
+
     private void browse (final InsertionPoint insertionPoint)
     {
         this.stopBrowsing (false);
