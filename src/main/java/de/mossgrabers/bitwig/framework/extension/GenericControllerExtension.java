@@ -41,7 +41,7 @@ public class GenericControllerExtension extends ControllerExtension
     {
         this.setup.init ();
         final ControllerHost host = this.getHost ();
-        host.scheduleTask ( () -> {
+        host.scheduleTask (() -> {
             this.setup.startup ();
             host.println ("Running.");
         }, 1000);

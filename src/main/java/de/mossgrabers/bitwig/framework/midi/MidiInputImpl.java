@@ -278,8 +278,8 @@ public class MidiInputImpl implements IMidiInput
 
         switch (continuousControl)
         {
-            case HwRelativeKnobImpl relativeKnob -> hardwareControl = relativeKnob.getHardwareKnob ();
-            case AbstractHwAbsoluteControl<?> absoluteControl -> hardwareControl = absoluteControl.getHardwareControl ();
+            case final HwRelativeKnobImpl relativeKnob -> hardwareControl = relativeKnob.getHardwareKnob ();
+            case final AbstractHwAbsoluteControl<?> absoluteControl -> hardwareControl = absoluteControl.getHardwareControl ();
 
             default -> {
                 return;
